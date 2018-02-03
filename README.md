@@ -7,9 +7,9 @@ Clay Tablet added alot of useful stuff. That's why it is called myShaTest
 
 Usage:
 
-$ /usr/lib/jvm/jdk1.7.0_76/bin/javac ShaTest.java
-$ /usr/lib/jvm/jdk1.7.0_76/jre/bin/java ShaTest
+$ javac ShaTest.java
+$ java ShaTest
 
-
-Use this command to install a cert in the jvm
+## Keystore / Truststore commands
+Use this command to install a cert in the default jvm keystore
 * keytool -import -alias apigeedev -file /home/vagrant/CERTS/apigee-dev.cer -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
