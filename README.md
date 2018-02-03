@@ -11,5 +11,16 @@ $ javac ShaTest.java
 $ java ShaTest
 
 ## Keystore / Truststore commands
-Use this command to install a cert in the default jvm keystore
-* keytool -import -alias apigeedev -file /home/vagrant/CERTS/apigee-dev.cer -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
+
+* Use this command to install a cert in the _default JVM keystore_
+
+```
+keytool -import -alias myalias -file /path/to/cert/mycert.cer -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
+```
+
+* Use this command to install a cert in the _custom JVM keystore_
+(Note: use the javax.net.ssl.keyStore System Property in the java app.)
+
+```
+keytool -import -alias myalias -file /path/to/cert/mycert.cer -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
+```
