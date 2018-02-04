@@ -26,7 +26,10 @@ public class ShaMan{
 		//private final String HTTPS_ADDRESS = "https://TRP-dev-producer.s3.amazonaws.com";
 
 
-		private final static String HTTPS_ADDRESS = "https://httpbin.org/get";
+				//private final static String HTTPS_ADDRESS = "https://httpbin.org/get";
+
+				private final static String HTTPS_ADDRESS = "https://troweprice-stage.adobecqms.net/content/regent.html";
+				
 
     public static void main(String[] args) throws Exception {
 
