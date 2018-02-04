@@ -29,6 +29,9 @@ keytool -import -alias myalias -file /path/to/cert/mycert.crt -keystore ./mykeyS
 ```
 
 
-### Example
+### Examples
 
-`keytool -import -alias httpbinorg -file /Users/paulmyers/Desktop/httpbinorg.crt -keystore ./keyStore  -storepass 12345`
+`keytool -import -alias httpbinorg -file /Users/paulmyers/Desktop/httpbinorg.crt -keystore ./keyStore  -storepass 123456`
+
+
+`keytool -import -alias adobecqmsnet -file /Users/paulmyers/Desktop/adobecqmsnet.crt -keystore ./keyStore  -storepass 123456`
