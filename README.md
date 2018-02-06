@@ -1,10 +1,10 @@
 # shaman
 Java networking with no dependencies
 
-This was created when we were trouble shooting Clay Tablet Connector
-It is based on the AWS ShaTest, https://www.amazonsha256.com/shaTest.zip
+This was created when I was trouble shooting Clay Tablet Connector
+It is based on the AWS ShaTest _hence the name ShaMan_, https://www.amazonsha256.com/shaTest.zip (no longer available),
+with additions from Clay Tablet Support.
 
-Clay Tablet added alot of useful stuff. That's why it is called myShaTest
 
 Usage:
 
