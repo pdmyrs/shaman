@@ -14,13 +14,13 @@ Usage:
 
 ## Keystore / Truststore commands
 
-* Use this command to install a cert in the *_default JVM truststore_*
+### 1. Use this command to install a cert in the *_default JVM truststore_*
 
 ```
 keytool -import -alias myalias -file /path/to/cert/mycert.cer -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
 ```
 
-* Use this command to install a cert in the *_custom JVM truststore_*
+### 2. Use this command to install a cert in the *_custom JVM truststore_*
 (Note: use the `javax.net.ssl.trustStore=` System Property in the java app to
 use the custom TrustStore.)
 
@@ -29,7 +29,7 @@ keytool -import -alias myalias -file /path/to/cert/mycert.crt -keystore ./mykeyS
 ```
 
 
-### Examples
+_Examples_
 
 `keytool -import -alias httpbinorg -file /Users/paulmyers/Desktop/httpbinorg.crt -keystore ./keyStore  -storepass 123456`
 
@@ -38,7 +38,7 @@ keytool -import -alias myalias -file /path/to/cert/mycert.crt -keystore ./mykeyS
 
 NOTE: use the -trustcacerts option to include the root CA cert in the truststore.
 
-* Use openssl to look dump the data in a cert:
+### 3. Use openssl to look dump the data in a cert:
 
 `openssl x509 -noout -text -in myCert.crt` 
 
