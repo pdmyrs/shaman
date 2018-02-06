@@ -36,25 +36,21 @@ public class ShaMan{
 		//private final String HTTPS_ADDRESS = "https://TRP-dev-producer.s3.amazonaws.com";
 
 
-				private final static String HTTPS_ADDRESS = "https://httpbin.org/get";
+				//private final static String HTTPS_ADDRESS = "https://httpbin.org/get";
 
-				// private final static String HTTPS_ADDRESS = "https://troweprice-stage.adobecqms.net/content/regent.html";
+				private final static String HTTPS_ADDRESS = "https://troweprice-stage.adobecqms.net/content/regent.html";
 
 
     public static void main(String[] args) throws Exception {
 
+			System.out.println("Java version: " + System.getProperty("java.version"));
       // read in properties from config.properties
 			setProperties();
 
-
-		 // dumpKeyStore();
-
-
 		  setProxy(false);
-		  checkJce(false);
+			checkJce(false);
 
-
-      System.out.println("Java version: " + System.getProperty("java.version"));
+		  dumpKeyStore();
 
 
      // do we accept non-trusted certs ?
@@ -91,6 +87,20 @@ public class ShaMan{
                     System.out.println("connection not instanceof HttpURLConnection");
                 }
             }
+
+
+            if(conn instanceof HttpsURLConnection){
+								HttpsURLConnection httpsConn = (HttpsURLConnection) conn;
+
+								   System.out.println("Server Cipher Suite=" + httpsConn.getCipherSuite());
+									 System.out.println("Peer Principal=" + httpsConn.getPeerPrincipal().toString());
+									 System.out.println("Local Principal=" +
+(httpsConn.getLocalPrincipal() != null ?
+									 httpsConn.getLocalPrincipal().toString() : "null" ));
+
+
+						}
+
             actual = new String(toByteArray(is));
 
         } finally {
@@ -169,7 +179,9 @@ public class ShaMan{
 
 				KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
 
-        System.out.println("Accessing Keystore " + storeName + "\n");
+        System.out.println("Accessing Keystore " + storeName);
+
+				System.out.println("Keystore certs: ");
 
 
 		java.io.FileInputStream fis = null;
@@ -181,31 +193,12 @@ public class ShaMan{
 			Enumeration enumeration = keystore.aliases();
 			while(enumeration.hasMoreElements()) {
 				String alias = (String)enumeration.nextElement();
-				System.out.println("   >> Alias Name: " + alias);
-				Certificate certificate = keystore.getCertificate(alias);
-				System.out.println("      Type: " + certificate.getType());
+				System.out.println();
+				System.out.println("Alias Name: " + alias);
+				Certificate [] certs = keystore.getCertificateChain(alias);
 
+				printCerts(certs);
 
-
-
-				if(certificate instanceof X509Certificate) {
-
-					X509Certificate xcert = (X509Certificate)certificate;
-
-									   System.out.println("      Pricipal (Subject DN): " + xcert.getSubjectX500Principal().toString());
-										 System.out.println("      Version: " + xcert.toString());
-				}
-
-
-
-
-
-
-
-
-
-				//System.out.println("\n#############################################################\n");
-				//System.out.println(certificate.toString());
 			}
 
 		} finally {
@@ -216,6 +209,31 @@ public class ShaMan{
 
 	}
 
+	private static void printCerts(Certificate [] certs) {
+
+		if(certs==null) return;
+
+		for(Certificate cert : certs) {
+
+     System.out.println(" > Type=" + cert.getType());
+
+		 if(cert instanceof X509Certificate) {
+			 	X509Certificate xcert = (X509Certificate)cert;
+				printX509Cert(xcert);
+		 }
+		 System.out.println();
+
+    }
+
+
+	}
+
+		private static void printX509Cert(X509Certificate xcert) {
+      System.out.println(" > Pricipal=" + xcert.getSubjectX500Principal().toString());
+		  System.out.println(" > Version=" + xcert.getVersion());
+		  System.out.println(" > Issuer Principal=" + xcert.getIssuerX500Principal().toString());
+
+		}
 
 
 		/*

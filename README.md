@@ -35,3 +35,16 @@ keytool -import -alias myalias -file /path/to/cert/mycert.crt -keystore ./mykeyS
 
 
 `keytool -import -alias adobecqmsnet -file /Users/paulmyers/Desktop/adobecqmsnet.crt -keystore ./keyStore  -storepass 123456`
+
+NOTE: use the -trustcacerts option to include the root CA cert in the truststore.
+
+* Use openssl to look dump the data in a cert:
+
+`openssl x509 -noout -text -in myCert.crt` 
+
+## References
+https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html
+
+https://blogs.oracle.com/java-platform-group/diagnosing-tls,-ssl,-and-https
+
+https://whatsmychaincert.com/
