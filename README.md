@@ -38,7 +38,15 @@ _Examples_
 
 NOTE: use the -trustcacerts option to include the root CA cert in the truststore.
 
-### 3. Use openssl to look dump the data in a cert:
+### 3. List certs in a keystore
+
+```
+
+keytool -list -v -keystore keystore.jks
+
+```
+
+### 4. Use openssl to look dump the data in a cert:
 
 `openssl x509 -noout -text -in myCert.crt` 
 
