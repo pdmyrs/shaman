@@ -1,9 +1,10 @@
 # shaman
+
+It's SHA man..
+
 Java networking with no dependencies
 
-This was created when I was trouble shooting Clay Tablet Connector
-It is based on the AWS ShaTest _hence the name ShaMan_, https://www.amazonsha256.com/shaTest.zip (no longer available),
-with additions from Clay Tablet Support.
+Based on the AWS ShaTest _hence the name ShaMan_, https://www.amazonsha256.com/shaTest.zip (no longer available), with some of my own additions
 
 
 Usage:
